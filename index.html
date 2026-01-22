@@ -105,7 +105,7 @@ document.getElementById("signupForm").addEventListener("submit", async function(
   const data = new FormData(e.target);
 
   /* Replace with your Google Apps Script URL */
-  const scriptURL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbz6Or3YE-NOCstrfq5u7nbNCXVuUDxt8ih4l0vdpAwBE9HPgPU_2sezdxEQ-dMvD9g5/exec";
 
   try {
     await fetch(scriptURL, { method: "POST", body: data });
@@ -119,3 +119,4 @@ document.getElementById("signupForm").addEventListener("submit", async function(
 
 </body>
 </html>
+
