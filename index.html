@@ -1,34 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Pieper Red Cross Test Page</title>
+<meta charset="UTF-8">
+<title>Pieper High School Red Cross Club</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial; margin:0; }
-header { background:#d80032; color:white; padding:20px; text-align:center; }
-.box { padding:30px; }
+body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f4f4f4; }
+header { background:#d80032; color:white; padding:25px; text-align:center; position:relative; }
+header img { position:absolute; right:20px; top:15px; height:70px; }
+nav { background:#b20029; text-align:center; padding:12px; }
+nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; }
+nav a:hover { text-decoration:underline; }
+
+.section { max-width:900px; margin:auto; padding:40px 20px; }
+.card { background:white; padding:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+
+h2 { color:#d80032; }
+
+form label { font-weight:bold; display:block; margin-top:15px; }
+form input, form select { width:100%; padding:10px; margin-top:6px; border-radius:6px; border:1px solid #ccc; }
+
+button { background:#d80032; color:white; padding:12px; border:none; width:100%; margin-top:15px; font-size:16px; border-radius:8px; cursor:pointer; }
+button:hover { background:#b20029; }
+
+.success { display:none; background:#00a86b; color:white; padding:10px; margin-top:10px; border-radius:6px; text-align:center; }
+
+footer { background:#333; color:white; text-align:center; padding:15px; }
 </style>
 </head>
 
 <body>
 
 <header>
+  <img src="PIPEPER HIGH SCHOOL LOGO.png" alt="Pieper Logo">
   <h1>Pieper High School Red Cross Club</h1>
+  <p>Service • Leadership • Humanity</p>
 </header>
 
-<div class="box">
-  <h2>About Section</h2>
-  <p>If you can see this text, your page is updating correctly.</p>
-</div>
+<nav>
+  <a href="#about">About</a>
+  <a href="#join">Join</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-<div class="box">
-  <h2>Join Section</h2>
-  <p>The signup form will be added here next.</p>
-</div>
+<section class="section" id="about">
+  <div class="card">
+    <h2>About Our Club</h2>
+    <p>
+      The Pieper High School Red Cross Club empowers students to serve their community
+      through humanitarian service, disaster preparedness, and leadership development.
+      Members support blood drives, participate in service projects, and learn
+      life-saving preparedness skills.
+    </p>
+  </div>
+</section>
 
-<div class="box">
-  <h2>Contact Section</h2>
-  <p>Pieper High School – Kinder Ranch</p>
-</div>
+<section class="section" id="join">
+  <div class="card">
+    <h2>Join the Club</h2>
+    <form id="signupForm">
+      <label>Full Name</label>
+      <input type="text" name="name" required>
+
+      <label>Grade</label>
+      <select name="grade" required>
+        <option value="">Select Grade</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Phone (optional)</label>
+      <input type="text" name="phone">
+
+      <button type="submit">Submit</button>
+      <div class="success" id="successMsg">✅ Thank you for joining the club!</div>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="card">
+    <h2>Contact</h2>
+    <p>
+      Pieper High School – Kinder Ranch<br>
+      Red Cross Youth Services<br>
+      Student Led | Faculty Sponsored
+    </p>
+  </div>
+</section>
+
+<footer>
+  © Pieper High School Red Cross Club
+</footer>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+  const data = new FormData(e.target);
+
+  /* Replace with your Google Apps Script URL */
+  const scriptURL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+
+  try {
+    await fetch(scriptURL, { method: "POST", body: data });
+    document.getElementById("successMsg").style.display = "block";
+    e.target.reset();
+  } catch {
+    alert("Submission failed. Please try again later.");
+  }
+});
+</script>
 
 </body>
 </html>
